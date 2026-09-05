@@ -31,7 +31,9 @@ export function Hero({ children }: { children?: ReactNode }) {
       className="relative isolate overflow-hidden bg-night"
       style={{ "--hero-w": HERO_IMAGE_WIDTH } as CSSProperties}
     >
-      <Container className="relative z-10 flex flex-col items-center pt-16 text-center sm:pt-24">
+      {/* Top padding must clear the 80px header, which overlays this section
+          rather than sitting above it in flow. */}
+      <Container className="relative z-10 flex flex-col items-center pt-28 text-center sm:pt-32">
         <Reveal>
           <Link
             href={hero.banner.href}

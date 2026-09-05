@@ -43,7 +43,9 @@ export function SiteFooter() {
 
         <p className="label mt-auto pt-24 text-white/60">A design study, built with Next.js</p>
 
-        <div className="mt-8 grid border-t border-white/15 bg-ink/25 backdrop-blur-[2px] sm:grid-cols-3 sm:divide-x sm:divide-white/12">
+        {/* Stacked on mobile, so the groups need horizontal rules there and
+            vertical ones once they sit side by side. */}
+        <div className="mt-8 grid divide-y divide-white/12 border-t border-white/15 bg-ink/25 backdrop-blur-[2px] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {navGroups.map((group) => (
             <nav key={group.title} aria-label={group.title} className="flex flex-col gap-5 p-7">
               <h2 className="label text-white">{group.title}</h2>
