@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Design tokens — the single source of truth for the visual system.
+ * Palette values mirror the reference site's CSS custom properties.
+ * Components consume these through Tailwind utilities (bg-cream, text-red, …);
+ * raw hex values should not appear outside this file.
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* Core palette */
+  --color-white: #ffffff;
+  --color-ink: #101010;
+  --color-ink-2: #333333;
+  --color-red: #f93f28;
+  --color-red-deep: #b01c1c;
+
+  /* Warm neutrals */
+  --color-cream: #f3f4ee;
+  --color-cream-2: #f5f4ef;
+  --color-sand: #e9ebe0;
+  --color-stone: #dee1d1;
+  --color-olive: #575d3c;
+  --color-grey: #c3c3c3;
+
+  /* Night — hero and dark sections */
+  --color-night: #050b1f;
+  --color-night-2: #0b1533;
+  --color-blue: #0f3d86;
+  --color-sky: #a9c4e4;
+  /* Where the hero image hands off to the first light section. */
+  --color-haze: #dfe9f5;
+
+  /* Hairlines */
+  --color-line: #e4e2da;
+  --color-line-dark: #ffffff1f;
+
+  /* Typography */
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --text-display: clamp(2.5rem, 5.6vw, 5.25rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.028em;
+  --text-display--font-weight: 400;
+
+  --text-headline: clamp(1.875rem, 4vw, 3.25rem);
+  --text-headline--line-height: 1.06;
+  --text-headline--letter-spacing: -0.026em;
+  --text-headline--font-weight: 400;
+
+  --text-title: clamp(1.5rem, 2.4vw, 2.25rem);
+  --text-title--line-height: 1.14;
+  --text-title--letter-spacing: -0.022em;
+  --text-title--font-weight: 400;
+
+  --text-eyebrow: 0.7125rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.08em;
+
+  /* Shape & motion */
+  --radius-card: 0.25rem;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    /* Deliberately light-only: the design supplies its own dark sections, and
+       opting out of the UA dark flip keeps token contrast predictable. */
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: var(--color-red);
+    color: var(--color-white);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  line-height: 1;
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* Hides the horizontal scrollbar on the drag-to-scroll story rail while
+   keeping the element scrollable for keyboard and trackpad users. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
