@@ -29,7 +29,14 @@ export function Hero({ children }: { children?: ReactNode }) {
   return (
     <section
       className="relative isolate overflow-hidden bg-night"
-      style={{ "--hero-w": HERO_IMAGE_WIDTH } as CSSProperties}
+      style={
+        {
+          "--hero-w": HERO_IMAGE_WIDTH,
+          // Held as a custom property rather than an inline margin so the
+          // overlap can be applied at a breakpoint by a utility class.
+          "--stats-overlap": `calc(var(--hero-w) * -${STATS_OVERLAP})`,
+        } as CSSProperties
+      }
     >
       {/* Top padding must clear the 80px header, which overlays this section
           rather than sitting above it in flow. */}
@@ -52,7 +59,7 @@ export function Hero({ children }: { children?: ReactNode }) {
         <Reveal delay={90}>
           {/* Sized locally rather than via `text-display`, so the hero headline
               can be tuned without moving the 404 numeral that shares the token. */}
-          <h1 className="mt-2 max-w-4xl text-[clamp(2rem,4vw,3.5rem)] leading-none font-normal tracking-[-0.028em] text-white text-balance">
+          <h1 className="mt-2 max-w-4xl text-[clamp(2.25rem,5.5vw,3.5rem)] leading-none font-normal tracking-[-0.028em] text-white text-balance">
             {hero.title}
           </h1>
         </Reveal>
@@ -87,18 +94,33 @@ export function Hero({ children }: { children?: ReactNode }) {
           fetchPriority="high"
           className="mx-auto h-auto w-full max-w-(--hero-w)"
         />
-        {/* Long, soft wash so the image dissolves into the section below. */}
+        {/*
+          Below `sm` the image dissolves into `haze` and the stats band picks
+          that same colour up, so the blue runs unbroken behind the figures.
+          From `sm` it fades to white instead, because there the stats overlap
+          the image rather than following it.
+        */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-linear-to-b from-transparent via-white/65 via-55% to-white"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-linear-to-b from-transparent to-haze sm:via-white/65 sm:via-55% sm:to-white"
         />
       </div>
 
+      {/*
+        The overlap is sm-and-up only: below that the stats stack into a tall
+        column that would run past the short mobile image onto the section's
+        night ground — dark ink on dark navy.
+
+        The band reaches pure white partway down and holds it, rather than
+        arriving there only at the final pixel — otherwise the near-white tail
+        meets the next section's true white and shows as a hard seam. Below
+        `sm` it starts at `haze`, carrying the image blue down behind the
+        figures; from `sm` it starts transparent so the image shows through the
+        overlap, and reaching white early also covers the night ground at tablet
+        widths, where the band can finish below the image.
+      */}
       {children ? (
-        <div
-          className="relative pb-24 sm:pb-32"
-          style={{ marginTop: `calc(var(--hero-w) * -${STATS_OVERLAP})` }}
-        >
+        <div className="relative bg-linear-to-b from-haze via-white via-70% to-white pt-10 pb-20 sm:mt-(--stats-overlap) sm:from-transparent sm:via-60% sm:pt-0 sm:pb-32">
           {children}
         </div>
       ) : null}

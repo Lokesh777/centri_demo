@@ -12,7 +12,7 @@ export function Capabilities() {
         <div className="flex flex-col items-center gap-6 text-center">
           <Eyebrow className="text-blue">Built for modern teams</Eyebrow>
           <h2 className="max-w-3xl text-headline text-balance">What Ballance does</h2>
-          <p className="max-w-2xl text-[1.0625rem] leading-relaxed text-ink/55 text-pretty">
+          <p className="max-w-2xl text-[1.0625rem] leading-relaxed text-ink/65 text-pretty">
             Issue cards, set the boundaries once, and watch spending land in real time — without
             adding a process anyone has to be trained on.
           </p>
@@ -26,7 +26,7 @@ export function Capabilities() {
               className={cn(capability.wide && "md:col-span-2")}
             >
               <article className="flex h-full flex-col gap-8 rounded-card bg-cream p-8 sm:p-10">
-                <Eyebrow className="text-ink/45">{capability.label}</Eyebrow>
+                <Eyebrow className="text-ink/60">{capability.label}</Eyebrow>
 
                 <div
                   className={cn(
@@ -46,7 +46,7 @@ export function Capabilities() {
 
                 <div className="mt-auto flex flex-col gap-3">
                   <h3 className="text-title text-balance">{capability.title}</h3>
-                  <p className="max-w-xl leading-relaxed text-ink/55 text-pretty">
+                  <p className="max-w-xl leading-relaxed text-ink/65 text-pretty">
                     {capability.description}
                   </p>
                 </div>

@@ -7,9 +7,15 @@ import { cn } from "@/lib/utils";
 
 const EASE_OUT_QUINT = [0.22, 1, 0.36, 1] as const;
 
+/**
+ * Content resolves out of a soft blur as it rises into view, rather than only
+ * fading. `filter` is animatable through the `domAnimation` feature bundle, so
+ * this costs nothing extra in bundle size — but it is kept shallow, since large
+ * blur radii are expensive to composite on mobile.
+ */
 const VARIANTS = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
 } as const;
 
 type RevealProps = {

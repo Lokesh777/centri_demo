@@ -30,14 +30,14 @@ export default async function LegalPage({ params }: PageProps<"/legal/[slug]">) 
       <Section className="pt-0">
         <Container>
           <div className="mx-auto flex max-w-3xl flex-col gap-10">
-            <p className="label text-ink/45">
+            <p className="label text-ink/60">
               Last updated {formatDate(document.updatedAt)}
             </p>
 
             {document.sections.map((section) => (
               <section key={section.heading} className="flex flex-col gap-3 border-t border-ink/10 pt-8">
                 <h2 className="text-xl font-bold tracking-tight">{section.heading}</h2>
-                <p className="leading-relaxed text-ink/55 text-pretty">{section.body}</p>
+                <p className="leading-relaxed text-ink/65 text-pretty">{section.body}</p>
               </section>
             ))}
           </div>

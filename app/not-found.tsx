@@ -22,7 +22,7 @@ export default function NotFound() {
         <h1 className="max-w-2xl text-headline text-balance">
           This page did not reconcile
         </h1>
-        <p className="max-w-lg text-lg leading-relaxed text-ink/55 text-pretty">
+        <p className="max-w-lg text-lg leading-relaxed text-ink/65 text-pretty">
           The link you followed points somewhere that no longer exists. Everything else is exactly
           where you left it.
         </p>

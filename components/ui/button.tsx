@@ -15,7 +15,7 @@ const BASE =
   "label inline-flex items-center justify-center gap-2.5 rounded-card transition-colors duration-200 ease-out disabled:pointer-events-none disabled:opacity-50";
 
 const VARIANTS: Record<Variant, string> = {
-  primary: "bg-red text-white hover:bg-red-deep",
+  primary: "bg-red-cta text-white hover:bg-red-deep",
   dark: "bg-white/8 text-white backdrop-blur-sm hover:bg-white/16",
   light: "bg-white text-ink hover:bg-cream",
   outline: "border border-ink/15 text-ink hover:border-ink/40",

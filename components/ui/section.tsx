@@ -66,7 +66,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <Eyebrow className={cn(tone === "light" ? "text-white/55" : "text-ink/45", eyebrowClassName)}>
+        <Eyebrow className={cn(tone === "light" ? "text-white/55" : "text-ink/60", eyebrowClassName)}>
           {eyebrow}
         </Eyebrow>
       ) : null}
@@ -77,7 +77,7 @@ export function SectionHeading({
         <p
           className={cn(
             "max-w-2xl text-[1.0625rem] leading-relaxed text-pretty",
-            tone === "light" ? "text-white/60" : "text-ink/55",
+            tone === "light" ? "text-white/60" : "text-ink/65",
           )}
         >
           {description}

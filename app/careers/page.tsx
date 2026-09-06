@@ -30,7 +30,7 @@ export default function CareersPage() {
           <div className="flex flex-col gap-12">
             {TEAMS.map((team) => (
               <div key={team} className="flex flex-col gap-1">
-                <h3 className="label text-ink/45">{team}</h3>
+                <h3 className="label text-ink/60">{team}</h3>
                 <ul className="flex flex-col border-t border-ink/10">
                   {jobs
                     .filter((job) => job.team === team)
@@ -42,7 +42,7 @@ export default function CareersPage() {
                             className="group flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-6"
                           >
                             <span className="text-xl font-bold tracking-tight">{job.title}</span>
-                            <span className="flex items-center gap-4 text-sm text-ink/55">
+                            <span className="flex items-center gap-4 text-sm text-ink/65">
                               <span>{job.location}</span>
                               <span aria-hidden="true">·</span>
                               <span>{job.type}</span>
@@ -72,7 +72,7 @@ export default function CareersPage() {
               <Reveal key={benefit.title} delay={(index % 3) * 80} className="h-full">
                 <li className="flex h-full flex-col gap-2 rounded-card border border-ink/10 p-7">
                   <h3 className="font-bold tracking-tight">{benefit.title}</h3>
-                  <p className="text-sm leading-relaxed text-ink/55 text-pretty">
+                  <p className="text-sm leading-relaxed text-ink/65 text-pretty">
                     {benefit.description}
                   </p>
                 </li>

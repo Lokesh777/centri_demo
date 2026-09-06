@@ -12,6 +12,9 @@
   --color-ink: #101010;
   --color-ink-2: #333333;
   --color-red: #f93f28;
+  /* Brand red is only 3.6:1 against white — below AA for button text. This is
+     the interactive shade: 4.8:1, same hue family. */
+  --color-red-cta: #d92d16;
   --color-red-deep: #b01c1c;
 
   /* Warm neutrals */

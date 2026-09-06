@@ -42,7 +42,7 @@ export function PricingTable() {
                     </span>
                   ) : null}
                 </div>
-                <p className={cn("text-sm", plan.featured ? "text-white/65" : "text-ink/55")}>
+                <p className={cn("text-sm", plan.featured ? "text-white/65" : "text-ink/65")}>
                   {plan.description}
                 </p>
               </header>
@@ -55,7 +55,7 @@ export function PricingTable() {
                     <span className="text-5xl font-bold tracking-tight tabular-nums">
                       {formatPrice(monthlyRate(plan.monthlyPrice, billing))}
                     </span>
-                    <span className={cn("text-sm", plan.featured ? "text-white/65" : "text-ink/55")}>
+                    <span className={cn("text-sm", plan.featured ? "text-white/65" : "text-ink/65")}>
                       /month
                     </span>
                   </>
@@ -65,7 +65,7 @@ export function PricingTable() {
               <p
                 className={cn(
                   "-mt-5 text-xs",
-                  plan.featured ? "text-white/55" : "text-ink/55",
+                  plan.featured ? "text-white/55" : "text-ink/65",
                 )}
               >
                 {plan.monthlyPrice === null
@@ -141,7 +141,7 @@ function BillingToggle({
           onClick={() => onChange(option.id)}
           className={cn(
             "rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-200",
-            value === option.id ? "bg-ink text-white" : "text-ink/55 hover:text-ink",
+            value === option.id ? "bg-ink text-white" : "text-ink/65 hover:text-ink",
           )}
         >
           {option.label}

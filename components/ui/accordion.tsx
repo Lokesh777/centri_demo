@@ -67,7 +67,7 @@ export function Accordion({ items }: { items: readonly AccordionItem[] }) {
               )}
             >
               <div className="overflow-hidden">
-                <p className="max-w-3xl pb-7 text-[1.0625rem] leading-relaxed text-ink/55 text-pretty">
+                <p className="max-w-3xl pb-7 text-[1.0625rem] leading-relaxed text-ink/65 text-pretty">
                   {item.answer}
                 </p>
               </div>

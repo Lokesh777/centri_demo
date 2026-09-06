@@ -54,11 +54,11 @@ export default function CustomersPage() {
                     </div>
 
                     <div className="flex flex-1 flex-col gap-4 p-7 sm:p-8">
-                      <p className="label text-ink/45">
+                      <p className="label text-ink/60">
                         {story.industry} · {story.customer}
                       </p>
                       <h2 className="text-title text-balance">{story.title}</h2>
-                      <p className="leading-relaxed text-ink/55 text-pretty">{story.intro}</p>
+                      <p className="leading-relaxed text-ink/65 text-pretty">{story.intro}</p>
                       <span className="label mt-auto inline-flex items-center gap-2 pt-2 text-ink">
                         Read the story
                         <ArrowUpRightIcon className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

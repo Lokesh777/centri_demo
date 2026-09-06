@@ -9,7 +9,7 @@ export function Stories() {
     <Section className="bg-cream-2">
       <div className="flex flex-col gap-14">
         <Container className="flex flex-col items-center gap-6 text-center">
-          <Eyebrow className="text-red">Real messages · Real feedback</Eyebrow>
+          <Eyebrow className="text-red-deep">Real messages · Real feedback</Eyebrow>
           <h2 className="max-w-3xl text-headline text-balance">What they say about Ballance</h2>
         </Container>
 
@@ -22,7 +22,7 @@ export function Stories() {
               <blockquote className="text-[clamp(1.5rem,2.2vw,2.125rem)] leading-tight tracking-tight text-balance">
                 “{featuredQuote.text}”
               </blockquote>
-              <figcaption className="label text-ink/45">
+              <figcaption className="label text-ink/60">
                 {featuredQuote.author} · {featuredQuote.role}, {featuredQuote.company}
               </figcaption>
             </figure>

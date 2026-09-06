@@ -17,7 +17,7 @@ export function BuiltFor() {
     <Section id="built-for" className="bg-ink text-white">
       <Container className="flex flex-col gap-14">
         <div className="flex flex-col items-center gap-5 text-center">
-          <Eyebrow className="text-white/45">For modern teams managing spend</Eyebrow>
+          <Eyebrow className="text-white/60">For modern teams managing spend</Eyebrow>
           <h2 className="max-w-3xl text-headline text-balance">Who Ballance is built for</h2>
           <p className="max-w-2xl text-[1.0625rem] leading-relaxed text-white/55 text-pretty">
             One product, four vantage points. Everyone sees the part of the money they are
@@ -29,7 +29,7 @@ export function BuiltFor() {
           {audiences.map((audience, index) => (
             <Reveal key={audience.id} delay={index === 0 ? 0 : 60} amount={0.08}>
               <article className="flex flex-col rounded-card border border-line-dark">
-                <Eyebrow className="px-6 py-5 text-white/45 sm:px-8">{audience.label}</Eyebrow>
+                <Eyebrow className="px-6 py-5 text-white/60 sm:px-8">{audience.label}</Eyebrow>
 
                 {/*
                   One uniform box for all four cards. The sources range from a

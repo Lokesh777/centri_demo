@@ -31,14 +31,14 @@ export default function BlogPage() {
               href={`/blog/${latest.slug}`}
               className="group flex flex-col gap-6 rounded-card border border-ink/10 bg-cream p-8 transition-colors duration-300 hover:border-ink/30 sm:p-12"
             >
-              <span className="flex items-center gap-3 label text-ink/45">
+              <span className="flex items-center gap-3 label text-ink/60">
                 {latest.category}
                 <span aria-hidden="true">·</span>
                 {formatDate(latest.publishedAt)}
               </span>
 
               <h2 className="max-w-3xl text-headline text-balance">{latest.title}</h2>
-              <p className="max-w-2xl text-lg leading-relaxed text-ink/55 text-pretty">
+              <p className="max-w-2xl text-lg leading-relaxed text-ink/65 text-pretty">
                 {latest.excerpt}
               </p>
 
@@ -57,12 +57,12 @@ export default function BlogPage() {
                     href={`/blog/${post.slug}`}
                     className="flex h-full flex-col gap-4 rounded-card border border-ink/10 bg-cream p-8 transition-colors duration-300 hover:border-ink/30"
                   >
-                    <span className="label text-ink/45">
+                    <span className="label text-ink/60">
                       {post.category}
                     </span>
                     <h3 className="text-xl font-bold tracking-tight text-balance">{post.title}</h3>
-                    <p className="text-sm leading-relaxed text-ink/55 text-pretty">{post.excerpt}</p>
-                    <span className="mt-auto border-t border-ink/10 pt-4 text-xs text-ink/55">
+                    <p className="text-sm leading-relaxed text-ink/65 text-pretty">{post.excerpt}</p>
+                    <span className="mt-auto border-t border-ink/10 pt-4 text-xs text-ink/65">
                       {formatDate(post.publishedAt)} · {post.readingMinutes} min read
                     </span>
                   </Link>

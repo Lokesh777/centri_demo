@@ -58,11 +58,12 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
         ])}
       />
 
-      <section className="bg-sand pt-32 pb-14 sm:pt-40">
+      {/* Dark masthead: the header renders white and overlays this section. */}
+      <section className="bg-night pt-32 pb-14 text-white sm:pt-40">
         <Container className="flex max-w-4xl flex-col gap-8">
           <Link
             href="/customers"
-            className="label inline-flex items-center gap-2.5 text-ink/50 transition-colors duration-200 hover:text-ink"
+            className="label inline-flex items-center gap-2.5 text-white/60 transition-colors duration-200 hover:text-white"
           >
             <ArrowLeftIcon width={14} height={14} />
             Case studies
@@ -71,7 +72,7 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
         </Container>
       </section>
 
-      <div className="bg-linear-to-b from-sand to-white">
+      <div className="bg-linear-to-b from-night to-white">
         <Container className="max-w-4xl">
           <div className="relative aspect-16/9 overflow-hidden rounded-card">
             <Image
@@ -95,8 +96,8 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
           <dl className="flex flex-col gap-4 self-start">
             {meta.map((entry) => (
               <div key={entry.label} className="flex flex-col gap-1">
-                <dt className="label text-ink/40">{entry.label}</dt>
-                <dd className="text-sm font-medium text-red">{entry.value}</dd>
+                <dt className="label text-ink/60">{entry.label}</dt>
+                <dd className="text-sm font-medium text-red-deep">{entry.value}</dd>
               </div>
             ))}
           </dl>
@@ -113,7 +114,7 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
             <blockquote className="text-lg leading-relaxed text-ink/80 italic text-pretty">
               “{story.pullQuote.text}”
             </blockquote>
-            <figcaption className="mt-3 text-sm text-ink/50">
+            <figcaption className="mt-3 text-sm text-ink/65">
               — {story.pullQuote.attribution}
             </figcaption>
           </figure>
@@ -123,7 +124,7 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
             <blockquote className="text-2xl leading-snug font-medium tracking-tight text-olive text-balance">
               “{story.closingQuote.text}”
             </blockquote>
-            <figcaption className="label text-ink/45">{story.closingQuote.attribution}</figcaption>
+            <figcaption className="label text-ink/60">{story.closingQuote.attribution}</figcaption>
           </figure>
         </Container>
       </Section>

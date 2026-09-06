@@ -24,7 +24,7 @@ export function PageHeader({
     <section className="bg-night pt-36 pb-20 text-white sm:pt-44 sm:pb-24">
       <Container className="flex flex-col items-center gap-6 text-center">
         <Reveal>
-          <Eyebrow className="text-white/45">{eyebrow}</Eyebrow>
+          <Eyebrow className="text-white/60">{eyebrow}</Eyebrow>
         </Reveal>
 
         <Reveal delay={80}>

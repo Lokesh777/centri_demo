@@ -18,7 +18,7 @@ export function Faq({
         <div className="flex flex-col gap-6">
           <Eyebrow className="text-blue">{eyebrow}</Eyebrow>
           <h2 className="max-w-2xl text-headline text-balance">{title}</h2>
-          <p className="max-w-xl text-[1.0625rem] leading-relaxed text-ink/55 text-pretty">{description}</p>
+          <p className="max-w-xl text-[1.0625rem] leading-relaxed text-ink/65 text-pretty">{description}</p>
         </div>
 
         <Accordion items={items} />
