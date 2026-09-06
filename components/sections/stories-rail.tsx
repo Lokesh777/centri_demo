@@ -67,8 +67,15 @@ export function StoriesRail({ stories }: { stories: readonly Story[] }) {
               href={`/customers/${story.slug}`}
               /* `isolate` is load-bearing: it gives the negative-z image a
                  stacking context to sit in. Without it the image escapes and
-                 renders behind the section background. */
-              className="group relative isolate flex aspect-4/5 flex-col justify-between overflow-hidden rounded-card p-6"
+                 renders behind the section background.
+
+                 `bg-ink` matters too. Contrast tooling ignores background
+                 images and gradients, so without a real background-color here
+                 the white text is measured against the section's cream and
+                 reads as ~1:1. It is also the honest fallback: if the image
+                 fails to load, the card stays legible instead of going white
+                 on cream. */
+              className="group relative isolate flex aspect-4/5 flex-col justify-between overflow-hidden rounded-card bg-ink p-6"
             >
               <Image
                 src={story.image.src}
@@ -79,7 +86,7 @@ export function StoriesRail({ stories }: { stories: readonly Story[] }) {
               />
               <div
                 aria-hidden
-                className="absolute inset-0 -z-10 bg-linear-to-b from-ink/35 via-transparent via-40% to-ink/45"
+                className="absolute inset-0 -z-10 bg-linear-to-b from-ink/60 via-ink/10 via-45% to-ink/70"
               />
 
               <div className="flex flex-col gap-1 text-white">
@@ -93,7 +100,7 @@ export function StoriesRail({ stories }: { stories: readonly Story[] }) {
                 {story.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="label rounded-card bg-white/20 px-3 py-2 text-white backdrop-blur-sm"
+                    className="label rounded-card bg-ink/65 px-3 py-2 text-white backdrop-blur-sm"
                   >
                     {tag}
                   </li>
