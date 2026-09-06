@@ -3,6 +3,7 @@ import { Inter_Tight, JetBrains_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { RevealScript } from "@/components/motion/reveal-script";
 import { site } from "@/content/site";
 
 import "./globals.css";
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+        <RevealScript />
       </body>
     </html>
   );
