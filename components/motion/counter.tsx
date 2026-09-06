@@ -20,10 +20,11 @@ export function Counter({
   suffix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  // The bottom margin holds the trigger back until the figure is properly
-  // inside the viewport, so the count-up reads as a reaction to arriving at
-  // the section rather than firing off-screen as its top edge grazes it.
-  const inView = useInView(ref, { once: true, amount: 0.6, margin: "0px 0px -12% 0px" });
+  // Kept deliberately loose, and matched to the surrounding Reveal's viewport
+  // settings. A stricter threshold plus a negative root margin meant the
+  // count-up could run while the parent Reveal was still at opacity 0, so the
+  // figure had already reached its final value by the time it faded in.
+  const inView = useInView(ref, { once: true, amount: 0.3 });
   const shouldReduceMotion = useReducedMotion();
   const [displayed, setDisplayed] = useState(0);
 
@@ -40,7 +41,13 @@ export function Counter({
   }, [inView, value, shouldReduceMotion]);
 
   return (
-    <span ref={ref} aria-label={`${prefix}${value}${suffix}`}>
+    <span ref={ref}>
+      {/*
+        The final value is exposed as visually-hidden text rather than an
+        aria-label: `aria-label` is prohibited on a generic element like a bare
+        <span>, and screen readers should never hear the intermediate frames.
+      */}
+      <span className="sr-only">{`${prefix}${value}${suffix}`}</span>
       <span aria-hidden="true">
         {prefix}
         {displayed}

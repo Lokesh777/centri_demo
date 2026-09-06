@@ -51,7 +51,7 @@ export function Compliance() {
     <Section className="bg-ink text-white">
       <Container className="flex flex-col gap-12">
         <div className="flex justify-center">
-          <Eyebrow className="text-white/45">Certified &amp; compliant</Eyebrow>
+          <Eyebrow className="text-white/60">Certified &amp; compliant</Eyebrow>
         </div>
 
         {/* Four across on desktop, matching the reference's single row. */}

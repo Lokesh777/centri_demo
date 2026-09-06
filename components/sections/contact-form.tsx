@@ -52,14 +52,14 @@ export function ContactForm({ defaultEmail = "" }: { defaultEmail?: string }) {
       <Field label="What are you trying to fix?" name="message" multiline />
 
       {state.status === "error" ? (
-        <p role="alert" className="text-sm font-medium text-red">
+        <p role="alert" className="text-sm font-medium text-red-deep">
           {state.message}
         </p>
       ) : null}
 
       <SubmitButton />
 
-      <p className="text-xs text-ink/50">
+      <p className="text-xs text-ink/65">
         By submitting you agree to our privacy policy. No card details are collected here.
       </p>
     </form>
@@ -132,7 +132,7 @@ function Field({
       )}
 
       {error ? (
-        <p id={errorId} className="text-xs font-medium text-red">
+        <p id={errorId} className="text-xs font-medium text-red-deep">
           {error}
         </p>
       ) : null}

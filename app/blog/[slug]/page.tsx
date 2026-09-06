@@ -35,11 +35,11 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
     <>
       <Section className="pt-14 pb-0 sm:pt-20">
         <Container className="flex max-w-3xl flex-col gap-6">
-          <Link href="/blog" className="label text-ink/45 hover:text-ink">
+          <Link href="/blog" className="label text-ink/60 hover:text-ink">
             ← All posts
           </Link>
 
-          <p className="flex flex-wrap items-center gap-3 label text-ink/45">
+          <p className="flex flex-wrap items-center gap-3 label text-ink/60">
             {post.category}
             <span aria-hidden="true">·</span>
             {formatDate(post.publishedAt)}
@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
 
           <h1 className="text-headline text-balance">{post.title}</h1>
 
-          <p className="text-sm text-ink/55">
+          <p className="text-sm text-ink/65">
             <span className="font-semibold text-ink">{post.author.name}</span> · {post.author.role}
           </p>
         </Container>

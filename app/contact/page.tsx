@@ -35,11 +35,11 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
 
           <aside className="flex flex-col gap-10">
             <div className="flex flex-col gap-5">
-              <h2 className="label text-ink/45">Direct lines</h2>
+              <h2 className="label text-ink/60">Direct lines</h2>
               <ul className="flex flex-col divide-y divide-ink/10 border-y border-ink/10">
                 {DETAILS.map((detail) => (
                   <li key={detail.label} className="flex items-center justify-between gap-4 py-4">
-                    <span className="text-sm text-ink/55">{detail.label}</span>
+                    <span className="text-sm text-ink/65">{detail.label}</span>
                     <a
                       href={detail.href}
                       className="text-sm font-medium underline-offset-4 hover:underline"
@@ -53,7 +53,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
 
             <div className="flex flex-col gap-3 rounded-card bg-cream p-7">
               <h2 className="font-medium tracking-tight">London</h2>
-              <p className="text-sm leading-relaxed text-ink/55">
+              <p className="text-sm leading-relaxed text-ink/65">
                 12 Rivington Street
                 <br />
                 London EC2A 3DU

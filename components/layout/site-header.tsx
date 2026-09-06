@@ -154,7 +154,7 @@ function MenuOverlay({ onClose }: { onClose: () => void }) {
                   <h3 className="text-xl leading-tight font-normal tracking-tight text-white text-balance">
                     {post.title}
                   </h3>
-                  <p className="label text-white/40">{post.category}</p>
+                  <p className="label text-white/60">{post.category}</p>
                 </div>
                 <ArrowUpRightIcon className="mt-1 shrink-0 text-white/60 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </div>
@@ -179,7 +179,7 @@ function MenuColumn({
       transition={{ duration: 0.5, ease: EASE_OUT_QUINT }}
       className="flex flex-col gap-6"
     >
-      <h2 className="label text-white/35">{title}</h2>
+      <h2 className="label text-white/60">{title}</h2>
       <ul className="flex flex-col gap-4">
         {links.map((link) => (
           <li key={link.href} className="flex items-center gap-3">

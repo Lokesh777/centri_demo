@@ -37,7 +37,7 @@ export default function CompanyPage() {
             <Reveal key={item.label} delay={index * 100}>
               <div className="rounded-card border border-ink/10 bg-cream p-8">
                 <p className="text-4xl font-bold tracking-tight">{item.value}</p>
-                <p className="mt-2 text-ink/55">{item.label}</p>
+                <p className="mt-2 text-ink/65">{item.label}</p>
               </div>
             </Reveal>
           ))}
@@ -57,7 +57,7 @@ export default function CompanyPage() {
               <Reveal key={value.title} delay={index * 80}>
                 <li className="flex flex-col gap-2 border-b border-ink/10 py-7 first:border-t">
                   <h3 className="text-xl font-bold tracking-tight">{value.title}</h3>
-                  <p className="leading-relaxed text-ink/55 text-pretty">{value.description}</p>
+                  <p className="leading-relaxed text-ink/65 text-pretty">{value.description}</p>
                 </li>
               </Reveal>
             ))}
@@ -72,7 +72,7 @@ export default function CompanyPage() {
             {TIMELINE.map((entry, index) => (
               <Reveal key={entry.year} delay={index * 80}>
                 <li className="flex gap-6 border-b border-ink/10 py-6 first:border-t sm:gap-12">
-                  <span className="font-mono text-sm text-ink/55">{entry.year}</span>
+                  <span className="font-mono text-sm text-ink/65">{entry.year}</span>
                   <p className="leading-relaxed text-ink/75 text-pretty">{entry.event}</p>
                 </li>
               </Reveal>
