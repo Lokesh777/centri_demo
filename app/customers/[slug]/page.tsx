@@ -58,11 +58,12 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
         ])}
       />
 
-      <section className="bg-sand pt-32 pb-14 sm:pt-40">
+      {/* Dark masthead: the header renders white and overlays this section. */}
+      <section className="bg-night pt-32 pb-14 text-white sm:pt-40">
         <Container className="flex max-w-4xl flex-col gap-8">
           <Link
             href="/customers"
-            className="label inline-flex items-center gap-2.5 text-ink/65 transition-colors duration-200 hover:text-ink"
+            className="label inline-flex items-center gap-2.5 text-white/60 transition-colors duration-200 hover:text-white"
           >
             <ArrowLeftIcon width={14} height={14} />
             Case studies
@@ -71,7 +72,7 @@ export default async function StoryPage({ params }: PageProps<"/customers/[slug]
         </Container>
       </section>
 
-      <div className="bg-linear-to-b from-sand to-white">
+      <div className="bg-linear-to-b from-night to-white">
         <Container className="max-w-4xl">
           <div className="relative aspect-16/9 overflow-hidden rounded-card">
             <Image
