@@ -3,7 +3,6 @@ import { Inter_Tight, JetBrains_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { MotionProvider } from "@/components/motion/motion-provider";
 import { site } from "@/content/site";
 
 import "./globals.css";
@@ -70,6 +69,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* The CDN serving every image on the page — warm the connection early. */}
         <link rel="preconnect" href="https://framerusercontent.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://framerusercontent.com" />
+        {/* Reveals start hidden and are shown by a scroll observer. Without
+            scripting there is no observer, so make them visible outright
+            rather than leaving the page blank. */}
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}`}</style>
+        </noscript>
       </head>
       <body className="relative flex min-h-dvh flex-col bg-white font-sans">
         <a
@@ -78,13 +83,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <MotionProvider>
-          <SiteHeader />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
-        </MotionProvider>
+        <SiteHeader />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );

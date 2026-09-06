@@ -123,3 +123,42 @@
     display: none;
   }
 }
+
+@layer components {
+  /*
+   * Scroll reveal, done in CSS.
+   *
+   * This was a motion component per element — roughly two dozen on the home
+   * page, each hydrating its own observer and animation state. The visual is
+   * identical here, but it costs no JavaScript beyond one shared
+   * IntersectionObserver that flips `data-visible`.
+   */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(8px);
+    transition:
+      opacity 0.75s var(--ease-out-quint),
+      transform 0.75s var(--ease-out-quint),
+      filter 0.75s var(--ease-out-quint);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    will-change: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal[data-visible="true"] {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+  }
+}

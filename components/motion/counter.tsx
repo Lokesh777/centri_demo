@@ -1,14 +1,25 @@
 "use client";
 
-import { animate, useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+
+const DURATION_MS = 1700;
+
+const easeOutQuint = (t: number) => 1 - (1 - t) ** 5;
+
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
  * Counts up to `value` the first time it scrolls into view.
  *
- * The accessible name is always the final value, so assistive technology never
- * announces the intermediate frames. Reduced-motion collapses the tween to zero
- * duration rather than skipping it, which keeps the code path identical.
+ * Hand-rolled on requestAnimationFrame rather than an animation library: it is
+ * a single eased tween over one number, which does not justify pulling a
+ * runtime into the initial bundle.
+ *
+ * The final value is exposed as visually-hidden text, so assistive technology
+ * reads the real figure and never the intermediate frames. (`aria-label` is
+ * prohibited on a generic element like a bare span.)
  */
 export function Counter({
   value,
@@ -20,33 +31,43 @@ export function Counter({
   suffix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  // Kept deliberately loose, and matched to the surrounding Reveal's viewport
-  // settings. A stricter threshold plus a negative root margin meant the
-  // count-up could run while the parent Reveal was still at opacity 0, so the
-  // figure had already reached its final value by the time it faded in.
-  const inView = useInView(ref, { once: true, amount: 0.3 });
-  const shouldReduceMotion = useReducedMotion();
   const [displayed, setDisplayed] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    const node = ref.current;
+    if (!node) return;
 
-    const controls = animate(0, value, {
-      duration: shouldReduceMotion ? 0 : 1.7,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (latest) => setDisplayed(Math.round(latest)),
-    });
+    let frame = 0;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
 
-    return () => controls.stop();
-  }, [inView, value, shouldReduceMotion]);
+        if (prefersReducedMotion()) {
+          setDisplayed(value);
+          return;
+        }
+
+        const start = performance.now();
+        const step = (now: number) => {
+          const progress = Math.min((now - start) / DURATION_MS, 1);
+          setDisplayed(Math.round(easeOutQuint(progress) * value));
+          if (progress < 1) frame = requestAnimationFrame(step);
+        };
+        frame = requestAnimationFrame(step);
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [value]);
 
   return (
     <span ref={ref}>
-      {/*
-        The final value is exposed as visually-hidden text rather than an
-        aria-label: `aria-label` is prohibited on a generic element like a bare
-        <span>, and screen readers should never hear the intermediate frames.
-      */}
       <span className="sr-only">{`${prefix}${value}${suffix}`}</span>
       <span aria-hidden="true">
         {prefix}
