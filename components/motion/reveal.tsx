@@ -1,17 +1,12 @@
-"use client";
-
 import {
   Children,
-  isValidElement,
   cloneElement,
-  useEffect,
-  useRef,
+  isValidElement,
   type CSSProperties,
   type ReactElement,
   type ReactNode,
 } from "react";
 
-import { observeReveal } from "@/lib/reveal-observer";
 import { cn } from "@/lib/utils";
 
 type RevealProps = {
@@ -23,32 +18,21 @@ type RevealProps = {
   amount?: number;
 };
 
-function useRevealOnScroll(amount?: number) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    return observeReveal(node, amount);
-  }, [amount]);
-
-  return ref;
-}
-
 /**
  * Fades, lifts and un-blurs its children the first time they enter view.
  *
- * The animation itself is CSS (`.reveal` in globals.css) — this only flips a
- * `data-visible` attribute via a shared observer. Reduced motion is handled in
- * the stylesheet, so no component needs its own check.
+ * Deliberately a *server* component. It renders nothing but a class and two
+ * data attributes — the animation is CSS (`.reveal` in globals.css), and a
+ * single `<RevealScript>` mounted once in the layout does the observing for
+ * every instance on the page. Making this a client component instead would add
+ * a hydration boundary per element, roughly twenty on the home page, to
+ * accomplish setting one attribute.
  */
 export function Reveal({ children, className, delay = 0, amount }: RevealProps) {
-  const ref = useRevealOnScroll(amount);
-
   return (
     <div
-      ref={ref}
       className={cn("reveal", className)}
+      data-reveal-amount={amount}
       style={delay ? ({ "--reveal-delay": `${delay}ms` } as CSSProperties) : undefined}
     >
       {children}
@@ -57,9 +41,9 @@ export function Reveal({ children, className, delay = 0, amount }: RevealProps) 
 }
 
 /**
- * Staggers its `RevealItem` children by giving each an increasing delay.
- * Each item still reveals on its own intersection, so a group taller than the
- * viewport does not animate its lower half off-screen.
+ * Staggers its children by giving each an increasing delay. Each child still
+ * reveals on its own intersection, so a group taller than the viewport does not
+ * animate its lower half off-screen.
  */
 export function RevealGroup({
   children,
