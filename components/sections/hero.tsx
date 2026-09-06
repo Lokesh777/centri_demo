@@ -41,7 +41,7 @@ export function Hero({ children }: { children?: ReactNode }) {
       {/* Top padding must clear the 80px header, which overlays this section
           rather than sitting above it in flow. */}
       <Container className="relative z-10 flex flex-col items-center pt-28 text-center sm:pt-32">
-        <Reveal>
+        <Reveal intro>
           <Link
             href={hero.banner.href}
             className="label group inline-flex items-center gap-3.5 rounded-card bg-white/8 px-3 py-2 text-white/80 backdrop-blur-sm transition-colors duration-200 hover:bg-white/15 hover:text-white"
@@ -56,7 +56,7 @@ export function Hero({ children }: { children?: ReactNode }) {
           </Link>
         </Reveal>
 
-        <Reveal delay={90}>
+        <Reveal intro delay={90}>
           {/* Sized locally rather than via `text-display`, so the hero headline
               can be tuned without moving the 404 numeral that shares the token. */}
           <h1 className="mt-2 max-w-4xl text-[clamp(2.25rem,5.5vw,3.5rem)] leading-none font-normal tracking-[-0.028em] text-white text-balance">
@@ -64,13 +64,13 @@ export function Hero({ children }: { children?: ReactNode }) {
           </h1>
         </Reveal>
 
-        <Reveal delay={180}>
+        <Reveal intro delay={180}>
           <p className="mt-8 max-w-96 text-base leading-normal text-white/65 text-pretty">
             {hero.description}
           </p>
         </Reveal>
 
-        <Reveal delay={270}>
+        <Reveal intro delay={270}>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={hero.secondaryCta.href} variant="dark" size="md">
               {hero.secondaryCta.label}
